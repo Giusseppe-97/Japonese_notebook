@@ -49,18 +49,11 @@ class Application(tk.Tk):
 
 
         # Set style of the GUI
-        self.tk.call('source', r'packages/style_azure/azure.tcl')
-        ttk.Style().theme_use('azure')
+        # missing
 
         # Create Main Frames
         self.mainFrame1 = tk.Frame(self)
         self.mainFrame2 = tk.Frame(self)
-
-        # Create Calendar
-        self.cal = tkc(
-            self.mainFrame1, selectbackground="#120597", background="#120597",
-            selectmode="day", year=2021, month=5, day=1
-        )
 
         # Call methods
         self.configure_basic_tk_properties()
@@ -69,7 +62,7 @@ class Application(tk.Tk):
     def configure_basic_tk_properties(self):
         """This method configures the basic tkinter esthetic properties for the GUI
         """
-        self.title("  TheMiceCounter")
+        self.title("  My_japonese_notebook")
 
         # Setting the main App in the center regardless to the window's size chosen by the user
         self.rowconfigure(0, weight=1)
@@ -80,11 +73,11 @@ class Application(tk.Tk):
 
         # Creating and placing Lables for each Frame
         self.lable = tk.Label(
-            self.mainFrame1, text="RUN DATA", foreground="white",
+            self.mainFrame1, text="What are we reviewing?", foreground="light gray",
             background="#120597").place(x=0, width=1920
                                         )
         self.lable2 = tk.Label(
-            self.mainFrame2, text="HISTOGRAM DISPLAY PREVIEW", foreground="white",
+            self.mainFrame2, text="Answers", foreground="light gray",
             background="#120597").place(y=0, width=1920
                                         )
 
@@ -117,9 +110,6 @@ class Application(tk.Tk):
         )
         self.button2 = ttk.Button(
             self.mainFrame1, text="Save", command=lambda: [self.save_results()]
-        )
-        self.button3 = ttk.Checkbutton(
-            self.mainFrame1, text="Run", style='ToggleButton', command=self.display_plot
         )
         self.button4 = ttk.Button(
             self, text="End date", command=self.grab_end_date
@@ -168,13 +158,11 @@ class Application(tk.Tk):
 
         self.button1.place(x=900, y=70, height=40, width=120)
         self.button2.place(x=900, y=140, height=40, width=120)
-        self.button3.place(x=1090, y=70, height=50, width=120)
         self.button_reset.place(x=1090, y=140, height=40, width=120)
         self.button5.place(x=1450, y=70, height=40)
         self.button4.place(x=1450, y=140, height=40)
         self.button_quit.pack(side=tk.BOTTOM, pady=10)
         # quit button not placed yet, just packed
-        self.cal.place(x=1550, y=30, rely=0.005, relx=0.02, height=210, width=300)
 
         self.canvas01.place(x=100, y=40, height=600, width=800)
         self.canvas02.place(x=1000, y=40, height=600, width=800)
@@ -567,5 +555,5 @@ if __name__ == "__main__":
     app = Application()
     app.geometry("1900x990+0+0")
     app.resizable(True, False)
-    app.iconbitmap(r'../docs/_site/bucket_4.ico')
+    app.iconbitmap(r'../bucket_4.ico')
     app.mainloop()
