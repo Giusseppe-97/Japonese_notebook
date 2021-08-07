@@ -77,11 +77,11 @@ class Application(tk.Tk):
 
         # Creating and placing Lables for each Frame
         self.lable = tk.Label(
-            self.mainFrame1, text="What are we reviewing?", foreground="light gray",
+            self.mainFrame1, text="What are we reviewing?", foreground="white",
             background="#120597").place(x=0, width=1920
                                         )
         self.lable2 = tk.Label(
-            self.mainFrame2, text="Answers", foreground="light gray",
+            self.mainFrame2, text="Answers", foreground="white",
             background="#120597").place(y=0, width=1920
                                         )
 
@@ -557,7 +557,7 @@ class FolderManager:
 
 if __name__ == "__main__":
     app = Application()
-    app.geometry("1900x990+0+0")
+    app.geometry("1600x800+0+0")
     app.resizable(True, False)
     app.iconbitmap(r'../bucket_4.ico')
     app.mainloop()
