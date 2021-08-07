@@ -52,8 +52,12 @@ class Application(tk.Tk):
         # missing
 
         # Create Main Frames
-        self.mainFrame1 = tk.Frame(self)
-        self.mainFrame2 = tk.Frame(self)
+        self.mainFrame1 = tk.Frame(
+            self, background="#F2f2f2"
+            )
+        self.mainFrame2 = tk.Frame(
+            self, background="#F2f2f2"
+            )
 
         # Call methods
         self.configure_basic_tk_properties()
@@ -83,19 +87,19 @@ class Application(tk.Tk):
 
         # Creating labels
         self.label3 = ttk.Label(
-            self.mainFrame1, text="Input: ", background="white"
+            self.mainFrame1, text="Input: ", background="#F2f2f2"
         )
         self.label4 = ttk.Label(
-            self.mainFrame1, text="Output:", background="white"
+            self.mainFrame1, text="Output:", background="#F2f2f2"
         )
         self.label5 = tk.Label(
-            self.mainFrame1, text="Select Date Interval: ", background="white"
+            self.mainFrame1, text="Select Date Interval: ", background="#F2f2f2"
         )
         self.label6 = ttk.Label(
-            self.mainFrame1, text="From:", background="white"
+            self.mainFrame1, text="From:", background="#F2f2f2"
         )
         self.label7 = ttk.Label(
-            self.mainFrame1, text="To:", background="white"
+            self.mainFrame1, text="To:", background="#F2f2f2"
         )
 
         # Creating textboxes
