@@ -26,7 +26,7 @@ from openpyxl.utils.dataframe import dataframe_to_rows
 from openpyxl import load_workbook
 import nicexcel as nl
 
-print("Loading TheMiceCounter application. This might take a minute.")
+print("Loading your study session. This might take a minute.")
 
 class Application(tk.Tk):
     """[Creating a main App class where all the frames are going to be set upon]
@@ -46,10 +46,10 @@ class Application(tk.Tk):
         # Create Main Frames
         self.mainFrame1 = tk.Frame(
             self, background="#F2f2f2"
-            )
+        )
         self.mainFrame2 = tk.Frame(
             self, background="#F2f2f2"
-            )
+        )
 
         # Call methods
         self.configure_basic_tk_properties()
@@ -71,42 +71,23 @@ class Application(tk.Tk):
         self.lable = tk.Label(
             self.mainFrame1, text="What are we reviewing?", foreground="white",
             background="#120597").place(x=0, width=1920
-                                        )
+        )
         self.lable2 = tk.Label(
             self.mainFrame2, text="Answers", foreground="white",
             background="#120597").place(y=0, width=1920
-                                        )
+        )
 
         # Creating labels
 
         self.label_practice = ttk.Label(
             self.mainFrame1, text=" ", background="#F2f2f2"
         )
-        self.label3 = ttk.Label(
-            self.mainFrame1, text="Input: ", background="#F2f2f2"
+        self.output_label = ttk.Label(
+            self, foreground='red'
         )
-        self.label4 = ttk.Label(
-            self.mainFrame1, text="Output:", background="#F2f2f2"
-        )
-        self.label5 = tk.Label(
-            self.mainFrame1, text="Select Date Interval: ", background="#F2f2f2"
-        )
-        self.label6 = ttk.Label(
-            self.mainFrame1, text="From:", background="#F2f2f2"
-        )
-        self.label7 = ttk.Label(
-            self.mainFrame1, text="To:", background="#F2f2f2"
-        )
-        self.output_label = ttk.Label(self, foreground='red')
-
-        # Creating textboxes
-        self.textbox1 = ttk.Entry(self.mainFrame1, width=80)
-        self.textbox2 = ttk.Entry(self.mainFrame1, width=80)
-        self.textbox3 = ttk.Entry(self.mainFrame1, width=20)
-        self.textbox4 = ttk.Entry(self.mainFrame1, width=20)
 
         # Dropdown menu options
-        self.options = [
+        self.options = (
             "All",
             "Adjective",
             "Article",
@@ -121,20 +102,20 @@ class Application(tk.Tk):
             "Verb",
             "Phrases",
             "Slang"
-        ]
+        )
 
         # datatype of menu text
         self.clicked = tk.StringVar(self)
         
      # option menu
-        option_menu = ttk.OptionMenu(
+        self.option_menu = ttk.OptionMenu(
             self,
             self.clicked,
             self.options[0],
             *self.options,
             command=self.option_changed)
 
-        option_menu.grid(column=1, row=0)
+        
 
         # Creating and initializing buttons
         # self.button1 = ttk.Button(
@@ -150,51 +131,26 @@ class Application(tk.Tk):
         #     master=self, text="Quit", command=self.quit
         # )
         self.button_select_category = ttk.Button(
-            master=self , text="click Me" , command = self.show())
-
-        # Creating Canvas (where Histograms are going to be placed as matplotlib Figures)
-        self.canvas01 = tk.Canvas(self.mainFrame2)
-        self.canvas02 = tk.Canvas(self.mainFrame2)
+            master=self , text="click Me" , command = self.option_changed())
 
     # Change the label text
 
     def option_changed(self, *args):
-        self.output_label['text'] = f'You selected: {self.option_var.get()}'
-
-
-    def show(self):
-        self.label_practice.config( text = self.clicked.get() )
+        self.output_label['text'] = f'You selected: {self.clicked.get()}'
         
     def pack_all(self):
 
         self.mainFrame1.place(x=0, y=0, height=600, width=1950)
         self.mainFrame2.place(x=0, y=200, rely=0.05, height=1000, width=1950)
 
-        self.label_practice.place(x=20, y=140, height=40, width=80)
-        self.label3.place(x=20, y=70, height=40, width=80)
-        self.label4.place(x=20, y=140, height=40, width=80)
-        self.label5.place(x=1300, y=30, height=30)
-        self.label6.place(x=1250, y=80, height=30)
-        self.label7.place(x=1250, y=150, height=30)
-        
-        self.output_label.grid(column=0, row=1)
+        self.output_label.place(x=20, y=100, height=40, width=80)
+        self.option_menu.place(x=40, y=140, height=40, width=80)
 
-        self.textbox1.place(x=80, y=70, height=40, width=800)
-        self.textbox2.place(x=80, y=140, height=40, width=800)
-        self.textbox3.place(x=1300, y=70, height=40, width=99)
-        self.textbox4.place(x=1300, y=140, height=40, width=99)
-
-        # self.button1.place(x=900, y=70, height=40, width=120)
-        # self.button2.place(x=900, y=140, height=40, width=120)
-        # self.button_reset.place(x=1090, y=70, height=40, width=120)
-        # self.button_quit.place(x=1090, y=140, height=40, width=120)
         self.button_select_category.place(x=1090, y=140, height=40, width=120)
 
         # self.drop.place(x=0, y=0)
 
         # quit button not placed yet, just packed
-        self.canvas01.place(x=100, y=40, height=600, width=800)
-        self.canvas02.place(x=1000, y=40, height=600, width=800)
 
     # def open_excel_file_location(self):
     #     """Open the File Explorer to select desired excel file
