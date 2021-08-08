@@ -13,20 +13,13 @@ except:
 
 import tkinter as tk
 from tkinter import ttk
-from tkcalendar import Calendar as tkc
 from tkinter.filedialog import askopenfilename
 from tkinter.filedialog import askdirectory
-
-from matplotlib.backends.backend_tkagg import (
-    FigureCanvasTkAgg, NavigationToolbar2Tk)
-import matplotlib.pyplot as plt
-from matplotlib.ticker import MaxNLocator
 
 import pandas as pd
 import seaborn as sns
 
 import os
-from datetime import datetime as dt
 
 import openpyxl
 from openpyxl.utils.dataframe import dataframe_to_rows
