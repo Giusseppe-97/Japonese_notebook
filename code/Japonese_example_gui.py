@@ -18,7 +18,6 @@ from tkinter.filedialog import askdirectory
 
 import pandas as pd
 import seaborn as sns
-
 import os
 
 import openpyxl
@@ -53,7 +52,7 @@ class Application(tk.Tk):
 
         # Call methods
         self.configure_basic_tk_properties()
-        self.pack_all()
+        self.place_all()
 
     def configure_basic_tk_properties(self):
         """This method configures the basic tkinter esthetic properties for the GUI
@@ -82,9 +81,6 @@ class Application(tk.Tk):
         self.label_practice = ttk.Label(
             self.mainFrame1, text=" ", background="#F2f2f2"
         )
-        self.output_label = ttk.Label(
-            self, foreground='red'
-        )
 
         # Dropdown menu options
         self.options = (
@@ -112,33 +108,27 @@ class Application(tk.Tk):
             self,
             self.clicked,
             self.options[0],
-            *self.options,
-            command=self.option_changed)
-
-        
+            *self.options)
 
         # Creating and initializing buttons
-        # self.button1 = ttk.Button(
-        #     self.mainFrame1, text="Select", command=lambda: [self.open_excel_file_location()]
+        self.button1 = ttk.Button(
+            self.mainFrame1, text="Select", command=lambda: [self.open_excel_file_location()]
+        )
+        self.button2 = ttk.Button(
+            self.mainFrame1, text="Save", command=lambda: [self.save_results()]
+        )
+        self.button_reset = ttk.Button(
+            master=self, text="Reset", command=self.restart_exercise()
+        )
+        self.button_quit = ttk.Button(
+            master=self, text="Quit", command=self.quit
+        )
+        # self.button_start_practice = ttk.Button(
+        #     master=self , text="Start" , command = self.start_practice()
         # )
-        # self.button2 = ttk.Button(
-        #     self.mainFrame1, text="Save", command=lambda: [self.save_results()]
-        # )
-        # self.button_reset = ttk.Button(
-        #     master=self, text="Reset", command=self.reset_app
-        # )
-        # self.button_quit = ttk.Button(
-        #     master=self, text="Quit", command=self.quit
-        # )
-        self.button_select_category = ttk.Button(
-            master=self , text="click Me" , command = self.option_changed())
 
-    # Change the label text
-
-    def option_changed(self, *args):
-        self.output_label['text'] = f'You selected: {self.clicked.get()}'
         
-    def pack_all(self):
+    def place_all(self):
 
         self.mainFrame1.place(x=0, y=0, height=600, width=1950)
         self.mainFrame2.place(x=0, y=200, rely=0.05, height=1000, width=1950)
@@ -146,45 +136,21 @@ class Application(tk.Tk):
         self.output_label.place(x=200, y=40, height=40, width=200)
         self.option_menu.place(x=40, y=40, height=40, width=120)
 
-        self.button_select_category.place(x=1090, y=140, height=40, width=120)
+        # self.button_select_category.place(x=1090, y=140, height=40, width=120)
 
-        # self.drop.place(x=0, y=0)
+    def open_excel_file_location(self):
+        """Open the File Explorer to select desired excel file
+        """
+        global filepath1            
+        filepath1 = askopenfilename(filetypes=[(
+            "xlsx Files", "*.xlsx"), ("csv Files", "*.csv"), ("All Files", "*.*")])
 
-        # quit button not placed yet, just packed
-
-    # def open_excel_file_location(self):
-    #     """Open the File Explorer to select desired excel file
-    #     """
-    #     global filepath1
-    #     if len(self.textbox1.get()) != 0:
-    #         self.textbox1.delete(0, 'end')
-            
-    #     filepath1 = askopenfilename(filetypes=[(
-    #         "xlsx Files", "*.xlsx"), ("csv Files", "*.csv"), ("All Files", "*.*")])
-    #     try:
-    #         with open(filepath1, "r"):
-    #             self.textbox1.insert(tk.END, filepath1)
+    def save_results(self):
+        """Open the file Explorer to select desired location to save results
+        """
+        global filepath1  
+        self.filepath2 = askdirectory()
         
-    #     except:
-    #         if not filepath1:
-    #             tk.messagebox.showwarning(title='No file selected.',
-    #                 message='Please make sure a file has been chosen before running the program.')
-    #             filepath1 = "../data/R403Q SoftMouse Export.xlsx"
-    #             with open(filepath1, "r"):
-    #                 self.textbox1.insert(tk.END, filepath1)
-
-    # def save_results(self):
-    #     """Open the file Explorer to select desired location to save results
-    #     """
-    #     global filepath2
-    #     if len(self.textbox2.get()) != 0:
-    #         self.textbox2.delete(0, 'end')
-    #     self.filepath2 = askdirectory()
-    #     if not self.filepath2:
-    #         tk.messagebox.showwarning(title='No folder selected',
-    #             message='Please make sure a folder has been chosen before running the program.')
-    #         self.filepath2 = "results/2021_monthly_results/plots_per_month"
-    #     self.textbox2.insert(tk.END, self.filepath2)
 
     # def import_excel_file(self):
     #     self.df = pd.read_excel(filepath1, sheet_name="Mouse List")
@@ -213,11 +179,13 @@ class Application(tk.Tk):
         # self.dfreduced.loc[:,'Calculated Age'] = dd2
 
         # self.create_excel_file()
+    
 
     def create_excel_file(self):
         
         pass
-
+    def restart_exercise(self):
+        pass
 
 if __name__ == "__main__":
     app = Application()
