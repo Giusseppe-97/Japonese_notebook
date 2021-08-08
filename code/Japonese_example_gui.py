@@ -143,7 +143,7 @@ class Application(tk.Tk):
         self.mainFrame1.place(x=0, y=0, height=600, width=1950)
         self.mainFrame2.place(x=0, y=200, rely=0.05, height=1000, width=1950)
 
-        self.output_label.place(x=40, y=140, height=40, width=200)
+        self.output_label.place(x=200, y=40, height=40, width=200)
         self.option_menu.place(x=40, y=40, height=40, width=120)
 
         self.button_select_category.place(x=1090, y=140, height=40, width=120)
