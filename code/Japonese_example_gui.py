@@ -162,8 +162,6 @@ class Application(tk.Tk):
     def timer(self):
         self.label_timer.config(text = "hola")
        
-         
-
 
     # def start_practice():
         
@@ -176,8 +174,8 @@ class Application(tk.Tk):
     
         
 
-    # def import_excel_file(self):
-    #     self.df = pd.read_excel(filepath1, sheet_name="Mouse List")
+    def import_excel_file(self):
+        self.df = pd.read_excel(filepath1, sheet_name="Practice_words")
 
     # def obtain_data_from_excel(self):
     #     self.import_excel_file()
