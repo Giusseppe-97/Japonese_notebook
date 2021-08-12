@@ -84,8 +84,15 @@ class Application(tk.Tk):
         self.label_practice = ttk.Label(
             self.mainFrame1, text=" ", background="#F2f2f2"
         )
+        # Dropdown menu practice options
+        self.exercice = (
+            "Romanji",
+            "Hiragana and Katakana",
+            "Kanji",
+            "Furigana"
+        )
 
-        # Dropdown menu options
+        # Dropdown menu practice options
         self.options = (
             "All",
             "Adjective",
@@ -108,6 +115,13 @@ class Application(tk.Tk):
         
      # option menu
         self.option_menu = ttk.OptionMenu(
+            self,
+            self.clicked,
+            self.exercice[0],
+            *self.exercice)
+     
+     # exercice menu
+        self.exercice_menu = ttk.OptionMenu(
             self,
             self.clicked,
             self.options[0],
