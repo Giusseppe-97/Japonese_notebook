@@ -138,7 +138,7 @@ class Application(tk.Tk):
         # self.output_label.place(x=200, y=40, height=40, width=200)
         self.option_menu.place(x=40, y=40, height=40, width=120)
 
-        self.button_start_practice.place(x=190, y=140, height=40, width=120)
+        self.button_start_practice.place(x=190, y=40, height=40, width=120)
         
     def open_excel_file_location(self):
         """Open the File Explorer to select desired excel file
@@ -160,8 +160,8 @@ class Application(tk.Tk):
     def import_excel_file(self):
         self.df = pd.read_excel(filepath1, sheet_name="Practice_words")
 
-    # def obtain_data_from_excel(self):
-    #     self.import_excel_file()
+    def obtain_data_from_excel(self):
+        self.import_excel_file()
 
     #     # Limit data from the excel file for the chosen period of time
     #     n_df = self.df[(self.init_date <= self.df.Date_of_birth) &
