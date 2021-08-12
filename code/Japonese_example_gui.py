@@ -216,18 +216,12 @@ class Application(tk.Tk):
 
         for index, rows in exercice_df.iterrows():
             random.randint(exercice_df.index)
-
-        self.create_excel_file()
     
         return exercice_length
 
     def start_practice(self):
         label = "self.clicked_op"
         print(label)
-
-    def create_excel_file(self):
-        
-        pass
 
     def restart_exercise(self):
         pass
