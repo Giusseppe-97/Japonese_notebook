@@ -84,18 +84,20 @@ class Application(tk.Tk):
         self.label_practice = ttk.Label(
             self.mainFrame1, text=" ", background="#F2f2f2"
         )
+        # Initializing filepath to excel database
+        self.filepath = "../data/Japonese_notebook.xlsx"
+
         # Dropdown menu practice options
         self.exercice = (
-            "All"
             "Romanji",
             "Hiragana & Katakana",
             "Kanji",
-            "Furigana"
+            "Furigana",
+            "All"
         )
         
         # Dropdown menu practice direction
         self.direction = (
-            "All,"
             "Romanji -> Word",
             "Word -> Romanji",
             "Romanji -> Type",
@@ -105,9 +107,10 @@ class Application(tk.Tk):
             "Kanji -> Word",
             "Word -> Kanji",
             "Kanji -> Type",
-            "Furigana -> Word"
-            "Word -> Furigana"
-            "Furigana -> Type"
+            "Furigana -> Word",
+            "Word -> Furigana",
+            "Furigana -> Type",
+            "All"
         )
 
         # Dropdown menu practice options
@@ -129,34 +132,39 @@ class Application(tk.Tk):
         )
 
         # datatype of menu text
-        self.clicked = tk.StringVar(self)
+        self.clicked_op = tk.StringVar(self)
+        self.clicked_ex = tk.StringVar(self)
+        self.clicked_dir = tk.StringVar(self)
         
      # option menu
         self.option_menu = ttk.OptionMenu(
             self,
-            self.clicked,
+            self.clicked_op,
             self.exercice[0],
-            *self.exercice)
+            *self.exercice
+        )
      
      # exercice menu
         self.exercice_menu = ttk.OptionMenu(
             self,
-            self.clicked,
+            self.clicked_ex,
             self.options[0],
-            *self.options)
+            *self.options
+        )
      
      # direction menu
         self.direction_menu = ttk.OptionMenu(
             self,
-            self.clicked,
+            self.clicked_dir,
             self.direction[0],
-            *self.direction)
+            *self.direction
+        )
 
         # Creating and initializing buttons
-        self.button1 = ttk.Button(
-            self.mainFrame1, text="Select", command=lambda: [self.open_excel_file_location()]
+        self.button_start_practice = ttk.Button(
+            master=self , text="Start", command =lambda: [self.start_practice(), self.obtain_data_from_excel()]
         )
-        self.button2 = ttk.Button(
+        self.button_save = ttk.Button(
             self.mainFrame1, text="Save", command=lambda: [self.save_results()]
         )
         self.button_reset = ttk.Button(
@@ -164,9 +172,6 @@ class Application(tk.Tk):
         )
         self.button_quit = ttk.Button(
             master=self, text="Quit", command=self.quit
-        )
-        self.button_start_practice = ttk.Button(
-            master=self , text="Start", command =lambda: [self.start_practice(), self.obtain_data_from_excel()]
         )
 
         
@@ -177,28 +182,26 @@ class Application(tk.Tk):
 
         # self.output_label.place(x=200, y=40, height=40, width=200)
         self.option_menu.place(x=40, y=40, height=40, width=120)
+        self.exercice_menu.place(x=40, y=100, height=40, width=120)
+        self.direction_menu.place(x=40, y=160, height=40, width=120)
 
+        self.button_save.place(x=1000, y=40, height=40, width=120)
+        self.button_reset.place(x=1000, y=100, height=40, width=120)
+        self.button_quit.place(x=1000, y=160, height=40, width=120)
         self.button_start_practice.place(x=190, y=40, height=40, width=120)
-        
-    def open_excel_file_location(self):
-        """Open the File Explorer to select desired excel file
-        """
-        global filepath1            
-        filepath1 = askopenfilename(filetypes=[(
-            "xlsx Files", "*.xlsx"), ("csv Files", "*.csv"), ("All Files", "*.*")])
 
     def save_results(self):
         """Open the file Explorer to select desired location to save results
         """
-        global filepath1  
-        self.filepath2 = askdirectory()
+        global filepath_save
+        self.filepath_save = askdirectory()
        
 
     def start_practice(self):
         pass
 
     def import_excel_file(self):
-        self.df = pd.read_excel(filepath1, sheet_name="Practice_words")
+        self.df = pd.read_excel(self.filepath, sheet_name="Practice_words")
 
     def obtain_data_from_excel(self):
         self.import_excel_file()
