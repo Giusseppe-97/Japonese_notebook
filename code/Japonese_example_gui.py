@@ -77,9 +77,6 @@ class Application(tk.Tk):
             self.mainFrame2, text="Answers", foreground="white",
             background="#120597").place(y=0, width=1920
         )
-        self.label_timer = 60
-        self.label_timer.after(1000, self.timer())
-
         
         # Creating labels
 
@@ -129,7 +126,7 @@ class Application(tk.Tk):
             master=self, text="Quit", command=self.quit
         )
         self.button_start_practice = ttk.Button(
-            master=self , text="Start" , bd='5', command = self.start_practice()
+            master=self , text="Start", command = self.start_practice()
         )
 
         
@@ -142,10 +139,7 @@ class Application(tk.Tk):
         self.option_menu.place(x=40, y=40, height=40, width=120)
 
         self.button_start_practice.place(x=190, y=140, height=40, width=120)
-        self.label_timer.place(x=240, y=40, height=40, width=120)
-
         
-
     def open_excel_file_location(self):
         """Open the File Explorer to select desired excel file
         """
@@ -158,21 +152,10 @@ class Application(tk.Tk):
         """
         global filepath1  
         self.filepath2 = askdirectory()
-
-    def timer(self):
-        self.label_timer.config(text = "hola")
        
 
-    # def start_practice():
-        
-    #         if (userinput == 0):
-    #             messagebox.showinfo("", "Time's Up")
-            
-
-    #         userinput -= 1
-
-    
-        
+    def start_practice(self):
+        pass
 
     def import_excel_file(self):
         self.df = pd.read_excel(filepath1, sheet_name="Practice_words")
