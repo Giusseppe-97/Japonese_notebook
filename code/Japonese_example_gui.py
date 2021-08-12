@@ -160,13 +160,13 @@ class Application(tk.Tk):
         )
 
         # Creating and initializing lables
-
+        self.output_label = ttk.Label(self, text= "")
         self.lable_op = ttk.Label(self, text = "Choose type of word/phrase:")
         self.lable_ex = ttk.Label(self, text = "Choose exercise:")
         self.lable_dir = ttk.Label(self,text = "Choose direction:") 
         # Creating and initializing buttons
         self.button_start_practice = ttk.Button(
-            master=self , text="Start", command =lambda: [self.start_practice(), self.obtain_data_from_excel()]
+            master=self , text="Start", command=self.start_practice()
         )
         self.button_save = ttk.Button(
             self.mainFrame1, text="Save", command=lambda: [self.save_results()]
@@ -184,7 +184,8 @@ class Application(tk.Tk):
         self.mainFrame1.place(x=0, y=0, height=600, width=1950)
         self.mainFrame2.place(x=0, y=200, rely=0.05, height=1000, width=1950)
 
-        # self.output_label.place(x=200, y=40, height=40, width=200)
+        self.output_label.place(x=1200, y=40, height=40, width=200)
+
         self.exercice_menu.place(x=250, y=40, height=40, width=200)
         self.direction_menu.place(x=250, y=100, height=40, width=200)
         self.option_menu.place(x=250, y=160, height=40, width=200)
@@ -205,8 +206,6 @@ class Application(tk.Tk):
         self.filepath_save = askdirectory()
        
 
-    def start_practice(self):
-        pass
 
     def import_excel_file(self):
         self.df = pd.read_excel(self.filepath, sheet_name="Practice_words")
@@ -215,9 +214,9 @@ class Application(tk.Tk):
         self.import_excel_file()
 
         # Limit data from the excel file for the chosen category
-        if self.df['Type'] == self.clicked:
+        if self.df.loc[self.df['Type']] == self.clicked_op:
             exercice_length = len(self.df['Type'])
-            exercice_df = pd.DataFrame((self.df['Type'] == self.clicked))
+            exercice_df = pd.DataFrame((self.df['Type'] == self.clicked_op))
 
         for index, rows in exercice_df.iterrows():
             random.randint(exercice_df.index)
@@ -230,6 +229,10 @@ class Application(tk.Tk):
         self.create_excel_file()
     
         return exercice_length
+
+    def start_practice(self):
+        label = "self.clicked_op"
+        print(label)
 
     def create_excel_file(self):
         
