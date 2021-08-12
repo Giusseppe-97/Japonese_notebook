@@ -166,6 +166,7 @@ class Application(tk.Tk):
         # Limit data from the excel file for the chosen category
         if self.df['Type'] == self.clicked:
             exercice_length = len(self.df['Type'])
+            exercice_df = pd.DataFrame((self.df['Type'] == self.clicked))
         
         return exercice_length
 
