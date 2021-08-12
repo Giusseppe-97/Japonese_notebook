@@ -86,6 +86,7 @@ class Application(tk.Tk):
         )
         # Dropdown menu practice options
         self.exercice = (
+            "All"
             "Romanji",
             "Hiragana & Katakana",
             "Kanji",
@@ -94,6 +95,7 @@ class Application(tk.Tk):
         
         # Dropdown menu practice direction
         self.direction = (
+            "All,"
             "Romanji -> Word",
             "Word -> Romanji",
             "Romanji -> Type",
@@ -142,6 +144,13 @@ class Application(tk.Tk):
             self.clicked,
             self.options[0],
             *self.options)
+     
+     # direction menu
+        self.direction_menu = ttk.OptionMenu(
+            self,
+            self.clicked,
+            self.direction[0],
+            *self.direction)
 
         # Creating and initializing buttons
         self.button1 = ttk.Button(
