@@ -208,8 +208,10 @@ class Application(tk.Tk):
 
     def start_practice(self):
         self.import_excel_file()
-
-        self.output_label.config(text=self.df.loc[self.df['Type']=="verb"])
+        the_list = []
+        for index, rows in self.df.iterrows():
+            the_list.append(rows['Word'])
+        self.output_label.config(text=the_list[random.randint(0, index)])
         self.output_label.config(font=("Courier", 11))
 
     def obtain_data_from_excel(self):
