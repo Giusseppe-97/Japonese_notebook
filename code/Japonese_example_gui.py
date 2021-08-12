@@ -162,6 +162,7 @@ class Application(tk.Tk):
         self.lable_op = ttk.Label(self, text = "Choose type of word/phrase:")
         self.lable_ex = ttk.Label(self, text = "Choose exercise:")
         self.lable_dir = ttk.Label(self,text = "Choose direction:") 
+
         # Creating and initializing buttons
         self.button_start_practice = ttk.Button(
             master=self , text="Start", command=lambda: [self.start_practice()]
@@ -181,7 +182,7 @@ class Application(tk.Tk):
         self.mainFrame1.place(x=0, y=0, height=600, width=1950)
         self.mainFrame2.place(x=0, y=200, rely=0.05, height=1000, width=1950)
 
-        self.output_label.place(x=1200, y=40, height=40, width=200)
+        self.output_label.place(x=700, y=40, height=300, width=800)
 
         self.exercice_menu.place(x=250, y=40, height=40, width=200)
         self.direction_menu.place(x=250, y=100, height=40, width=200)
@@ -202,11 +203,14 @@ class Application(tk.Tk):
         global filepath_save
         self.filepath_save = askdirectory()
        
-    def start_practice(self):
-        self.output_label.config(text="New text")
-
     def import_excel_file(self):
         self.df = pd.read_excel(self.filepath, sheet_name="Practice_words")
+
+    def start_practice(self):
+        self.import_excel_file()
+
+        self.output_label.config(text=self.df.loc[self.df['Type']=="verb"])
+        self.output_label.config(font=("Courier", 11))
 
     def obtain_data_from_excel(self):
         self.import_excel_file()
