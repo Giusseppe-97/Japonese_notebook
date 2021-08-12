@@ -87,9 +87,25 @@ class Application(tk.Tk):
         # Dropdown menu practice options
         self.exercice = (
             "Romanji",
-            "Hiragana and Katakana",
+            "Hiragana & Katakana",
             "Kanji",
             "Furigana"
+        )
+        
+        # Dropdown menu practice direction
+        self.direction = (
+            "Romanji -> Word",
+            "Word -> Romanji",
+            "Romanji -> Type",
+            "Hiragana & Katakana -> Word",
+            "Word -> Hiragana & Katakana",
+            "Hiragana & Katakana -> Type",
+            "Kanji -> Word",
+            "Word -> Kanji",
+            "Kanji -> Type",
+            "Furigana -> Word"
+            "Word -> Furigana"
+            "Furigana -> Type"
         )
 
         # Dropdown menu practice options
