@@ -80,7 +80,7 @@ class Application(tk.Tk):
         
         # Creating labels
         self.label_practice = ttk.Label(
-            self.mainFrame1, text=" ", background="#F2f2f2"
+            self.mainFrame1, text= "", background="#F2f2f2"
         )
         # Initializing filepath to excel database
         self.filepath = "../data/Japonese_notebook.xlsx"
@@ -158,13 +158,13 @@ class Application(tk.Tk):
         )
 
         # Creating and initializing lables
-        self.output_label = ttk.Label(self, text= "")
+        self.output_label = ttk.Label(self, text= "Old text")
         self.lable_op = ttk.Label(self, text = "Choose type of word/phrase:")
         self.lable_ex = ttk.Label(self, text = "Choose exercise:")
         self.lable_dir = ttk.Label(self,text = "Choose direction:") 
         # Creating and initializing buttons
         self.button_start_practice = ttk.Button(
-            master=self , text="Start", command=self.start_practice()
+            master=self , text="Start", command=lambda: [self.start_practice()]
         )
         self.button_save = ttk.Button(
             self.mainFrame1, text="Save", command=lambda: [self.save_results()]
@@ -175,7 +175,6 @@ class Application(tk.Tk):
         self.button_quit = ttk.Button(
             master=self, text="Quit", command=self.quit
         )
-
         
     def place_all(self):
 
@@ -203,6 +202,9 @@ class Application(tk.Tk):
         global filepath_save
         self.filepath_save = askdirectory()
        
+    def start_practice(self):
+        self.output_label.config(text="New text")
+
     def import_excel_file(self):
         self.df = pd.read_excel(self.filepath, sheet_name="Practice_words")
 
@@ -218,10 +220,6 @@ class Application(tk.Tk):
             random.randint(exercice_df.index)
     
         return exercice_length
-
-    def start_practice(self):
-        label = "self.clicked_op"
-        print(label)
 
     def restart_exercise(self):
         pass
