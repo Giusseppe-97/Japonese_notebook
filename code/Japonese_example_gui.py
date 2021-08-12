@@ -126,7 +126,7 @@ class Application(tk.Tk):
             master=self, text="Quit", command=self.quit
         )
         self.button_start_practice = ttk.Button(
-            master=self , text="Start", command = self.start_practice()
+            master=self , text="Start", command =lambda: [self.start_practice(), self.obtain_data_from_excel()]
         )
 
         
@@ -163,9 +163,11 @@ class Application(tk.Tk):
     def obtain_data_from_excel(self):
         self.import_excel_file()
 
-    #     # Limit data from the excel file for the chosen period of time
-    #     n_df = self.df[(self.init_date <= self.df.Date_of_birth) &
-    #                    (self.df.Date_of_birth <= self.final_date)]
+        # Limit data from the excel file for the chosen category
+        if self.df['Type'] == self.clicked:
+            exercice_length = len(self.df['Type'])
+        
+        return exercice_length
 
         # Selects data from the excel file for sex, genotype and status (only mice that are alive)
         # df_MWt = pd.DataFrame(n_df.loc[(self.df['Sex'] == 'Male') & (
