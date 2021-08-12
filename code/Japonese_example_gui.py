@@ -170,20 +170,16 @@ class Application(tk.Tk):
             exercice_df = pd.DataFrame((self.df['Type'] == self.clicked))
 
         for index, rows in exercice_df.iterrows():
-            randint()
+            random.randint(exercice_df.index)
 
-        return exercice_length
 
-        # df_FWt = pd.DataFrame(n_df.loc[(self.df['Sex'] == 'Female') & (
-        #     n_df['Genotype'] == 'Null(-)') & (n_df['Status'] == 'Alive')])
 
-     
+        # Adding a column in excel with reviewed word
+        # self.point_for_word.loc[:,'Reviewed word']
 
-        # Adding a column in excel with the calculated age
-        # self.dfreduced.loc[:,'Calculated Age'] = dd2
-
-        # self.create_excel_file()
+        self.create_excel_file()
     
+        return exercice_length
 
     def create_excel_file(self):
         
