@@ -89,45 +89,45 @@ class Application(tk.Tk):
 
         # Dropdown menu practice options
         self.exercice = (
-            "Type the answer",
-            "Multiple choice",
+            "Type the answer" ,
+            "Multiple choice" ,
             "Select from list",
             "All"
         )
         
         # Dropdown menu practice direction
         self.direction = (
-            "Romanji -> Word",
-            "Word -> Romanji",
-            "Romanji -> Type",
+            "Romanji -> Word"            ,
+            "Word -> Romanji"            ,
+            "Romanji -> Type"            ,
             "Hiragana & Katakana -> Word",
             "Word -> Hiragana & Katakana",
             "Hiragana & Katakana -> Type",
-            "Kanji -> Word",
-            "Word -> Kanji",
-            "Kanji -> Type",
-            "Furigana -> Word",
-            "Word -> Furigana",
-            "Furigana -> Type",
+            "Kanji -> Word"              ,
+            "Word -> Kanji"              ,
+            "Kanji -> Type"              ,
+            "Furigana -> Word"           ,
+            "Word -> Furigana"           ,
+            "Furigana -> Type"           ,
             "All"
         )
 
         # Dropdown menu practice options
         self.options = (
-            "All",
-            "Adjective",
-            "Article",
-            "City",
-            "Color",
-            "Country",
-            "Kinship",
-            "Noun",
-            "Number",
-            "Preposition",
-            "Pronoun",
-            "Verb",
-            "Phrases",
-            "Slang"
+            "  All                      ",
+            "  Adjective                ",
+            "  Article                  ",
+            "  City                     ",
+            "  Color                    ",
+            "  Country                  ",
+            "  Kinship                  ",
+            "  Noun                     ",
+            "  Number                   ",
+            "  Preposition              ",
+            "  Pronoun                  ",
+            "  Verb                     ",
+            "  Phrases                  ",
+            "  Slang                    "
         )
 
         # datatype of menu text
@@ -161,9 +161,9 @@ class Application(tk.Tk):
 
         # Creating and initializing lables
 
-        self.lable_op = ttk.Label(self, text = "Choose type of word/phrase")
-        self.lable_ex = ttk.Label(self, text = "Choose exercise")
-        self.lable_dir = ttk.Label(self,text = "Choose direction") 
+        self.lable_op = ttk.Label(self, text = "Choose type of word/phrase:")
+        self.lable_ex = ttk.Label(self, text = "Choose exercise:")
+        self.lable_dir = ttk.Label(self,text = "Choose direction:") 
         # Creating and initializing buttons
         self.button_start_practice = ttk.Button(
             master=self , text="Start", command =lambda: [self.start_practice(), self.obtain_data_from_excel()]
@@ -185,9 +185,9 @@ class Application(tk.Tk):
         self.mainFrame2.place(x=0, y=200, rely=0.05, height=1000, width=1950)
 
         # self.output_label.place(x=200, y=40, height=40, width=200)
-        self.exercice_menu.place(x=300, y=40, height=40, width=200)
-        self.direction_menu.place(x=300, y=100, height=40, width=200)
-        self.option_menu.place(x=300, y=160, height=40, width=200)
+        self.exercice_menu.place(x=250, y=40, height=40, width=200)
+        self.direction_menu.place(x=250, y=100, height=40, width=200)
+        self.option_menu.place(x=250, y=160, height=40, width=200)
 
         self.button_save.place(x=500, y=40, height=40, width=120)
         self.button_reset.place(x=500, y=90, height=40, width=120)
@@ -195,8 +195,8 @@ class Application(tk.Tk):
         self.button_start_practice.place(x=500, y=190, height=40, width=120)
 
         self.lable_op.place(x=40, y=40, height=40, width=200)
-        self.lable_ex.place(x=40, y=100, height=40, width=200)
-        self.lable_dir.place(x=40, y=160, height=40, width=200)
+        self.lable_dir.place(x=40, y=100, height=40, width=200)
+        self.lable_ex.place(x=40, y=160, height=40, width=200)
 
     def save_results(self):
         """Open the file Explorer to select desired location to save results
