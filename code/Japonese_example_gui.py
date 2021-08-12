@@ -221,11 +221,6 @@ class Application(tk.Tk):
         for index, rows in exercice_df.iterrows():
             random.randint(exercice_df.index)
 
-
-
-        # Adding a column in excel with reviewed word
-        # self.point_for_word.loc[:,'Reviewed word']
-
         self.create_excel_file()
     
         return exercice_length
