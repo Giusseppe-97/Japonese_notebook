@@ -18,6 +18,7 @@ from tkinter.filedialog import askopenfilename
 from tkinter.filedialog import askdirectory
 
 import pandas as pd
+import random
 import seaborn as sns
 import os
 
@@ -167,16 +168,11 @@ class Application(tk.Tk):
         if self.df['Type'] == self.clicked:
             exercice_length = len(self.df['Type'])
             exercice_df = pd.DataFrame((self.df['Type'] == self.clicked))
-        
+
+        for index, rows in exercice_df.iterrows():
+            randint()
+
         return exercice_length
-
-        # Selects data from the excel file for sex, genotype and status (only mice that are alive)
-        # df_MWt = pd.DataFrame(n_df.loc[(self.df['Sex'] == 'Male') & (
-        #     n_df['Genotype'] == 'Null(-)') & (n_df['Status'] == 'Alive')])
-
-        # for index, rows in df_MWt.iterrows():
-        #     a = str(n_df['Date_of_birth'][index])
-        #     birth_MWt.append(a[:10])
 
         # df_FWt = pd.DataFrame(n_df.loc[(self.df['Sex'] == 'Female') & (
         #     n_df['Genotype'] == 'Null(-)') & (n_df['Status'] == 'Alive')])
