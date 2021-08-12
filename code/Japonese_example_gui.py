@@ -60,7 +60,6 @@ class Application(tk.Tk):
         """This method configures the basic tkinter esthetic properties for the GUI
         """
         self.title("  My japonese notebook")
-        self.cont = 60
 
         # Setting the main App in the center regardless to the window's size chosen by the user
         self.rowconfigure(0, weight=1)
@@ -80,7 +79,6 @@ class Application(tk.Tk):
         )
         
         # Creating labels
-
         self.label_practice = ttk.Label(
             self.mainFrame1, text=" ", background="#F2f2f2"
         )
@@ -135,7 +133,7 @@ class Application(tk.Tk):
         self.clicked_ex = tk.StringVar(self)
         self.clicked_dir = tk.StringVar(self)
         
-     # option menu
+        # option menu
         self.option_menu = ttk.OptionMenu(
             self,
             self.clicked_op,
@@ -143,7 +141,7 @@ class Application(tk.Tk):
             *self.exercice
         )
      
-     # exercice menu
+        # exercice menu
         self.exercice_menu = ttk.OptionMenu(
             self,
             self.clicked_ex,
@@ -151,7 +149,7 @@ class Application(tk.Tk):
             *self.options
         )
      
-     # direction menu
+        # direction menu
         self.direction_menu = ttk.OptionMenu(
             self,
             self.clicked_dir,
@@ -205,8 +203,6 @@ class Application(tk.Tk):
         global filepath_save
         self.filepath_save = askdirectory()
        
-
-
     def import_excel_file(self):
         self.df = pd.read_excel(self.filepath, sheet_name="Practice_words")
 
