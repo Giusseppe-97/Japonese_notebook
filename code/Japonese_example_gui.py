@@ -228,6 +228,8 @@ class Application(tk.Tk):
         return exercice_length
 
     def restart_exercise(self):
+
+        
         pass
 
 if __name__ == "__main__":
