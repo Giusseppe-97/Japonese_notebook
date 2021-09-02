@@ -176,6 +176,8 @@ class Application(tk.Tk):
         self.button_quit = ttk.Button(
             master=self, text="Quit", command=self.quit
         )
+        self.button_mic = tk.Button(
+            master=self, text='Switch Mic On', width=15, command=self.toggle)
         
     def place_all(self):
 
@@ -192,10 +194,23 @@ class Application(tk.Tk):
         self.button_reset.place(x=500, y=90, height=40, width=120)
         self.button_quit.place(x=500, y=140, height=40, width=120)
         self.button_start_practice.place(x=500, y=190, height=40, width=120)
+        self.button_mic.place(x=800, y=40, height=40, width=120)
 
         self.lable_op.place(x=40, y=40, height=40, width=200)
         self.lable_dir.place(x=40, y=100, height=40, width=200)
         self.lable_ex.place(x=40, y=160, height=40, width=200)
+    def toggle(self, tog=[0]):
+        '''
+        a list default argument has a fixed address
+        '''
+        script = "../switchHeadphones.sh"
+        tog[0] = not tog[0]
+        if tog[0]:
+            os.system(script+' speak')
+            self.button_mic.config(text='Switch Mic Off')
+        else:
+            os.system(script+' listen')
+            self.button_mic.config(text='Switch Mic On')
 
     def save_results(self):
         """Open the file Explorer to select desired location to save results
